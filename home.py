@@ -76,4 +76,10 @@ if __name__ == '__main__':
         }
     }
     cherrypy.tree.mount(Colour(), '/colorChange')
-    cherrypy.quickstart(Home(), '/', conf)
+    
+    cherrypy.config.update({
+        'server.socket_host': '0.0.0.0', 
+        'server.socket_port': 8080   
+    })
+
+    cherrypy.quickstart(Home(), '/')
